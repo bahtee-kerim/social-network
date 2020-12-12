@@ -1,0 +1,23 @@
+.friends {
+  color: white;
+  margin-top: 150px;
+}
+
+.friends img {
+  width: 40px;
+  margin-left: 5px;
+  padding-left: 5px;
+  border-radius: 50%;
+}
+
+.friends span {
+  padding: 6px;
+}
+
+.friends h2 {
+  margin-left: 35px;
+}
+
+.friendsE {
+  padding: 6px;
+}

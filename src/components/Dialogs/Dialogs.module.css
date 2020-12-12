@@ -1,0 +1,15 @@
+.dialogsWrapper {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  color: rgb(255, 255, 255);
+}
+
+.dialogsList {
+  padding: 10px;
+}
+
+.messagesWrapper {
+  padding: 10px;
+  margin-left: 80px;
+  margin-top: 50px;
+}

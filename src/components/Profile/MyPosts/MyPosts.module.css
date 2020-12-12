@@ -1,0 +1,28 @@
+.inp {
+  margin: 0 220px;
+  align-items: flex-end;
+  margin-top: 50px;
+}
+
+.inp button {
+  margin: 20px;
+  background-color: #e08821;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  padding: 7px 25px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.inp textarea {
+  background-color: #6d6e71;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.posts hr {
+  width: 850px;
+}

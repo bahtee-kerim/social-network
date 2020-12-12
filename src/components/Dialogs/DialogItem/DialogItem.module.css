@@ -1,0 +1,23 @@
+.dialog {
+  font-size: 18px;
+  margin: 10px;
+}
+
+.dialog a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  margin-left: 10px;
+}
+
+.dialog img {
+  width: 50px;
+  border-radius: 15px;
+}
+
+.dialog a:hover {
+  color: #e08821;
+}
+
+.activeDialog {
+  color: #e08821;
+}
