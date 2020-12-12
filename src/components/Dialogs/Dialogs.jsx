@@ -9,6 +9,14 @@ const Dialogs = (props) => {
   let DialogsElement = props.state.dialogs.map( d =>  <DialogItem name={d.name} id={d.id} src={d.src} /> )
   let MessagesElement = props.state.messages.map( s =>  <Message message={s.message} /> )
 
+  let newMessageElement = React.createRef();
+
+  const addNewMessage = () => {
+    let text = newMessageElement.current.value;
+    
+    alert(text);
+  }
+
   return (
     <div className={d.dialogsWrapper}>
       <div className={d.dialogsList}>
@@ -19,6 +27,10 @@ const Dialogs = (props) => {
       <div className={d.messagesWrapper}>
 
       { MessagesElement }
+
+      <textarea ref={newMessageElement} cols="50" rows="5"></textarea>
+
+      <button onClick={addNewMessage}>Add message</button>
 
       </div>
     </div>

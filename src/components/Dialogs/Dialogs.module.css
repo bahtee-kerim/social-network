@@ -13,3 +13,24 @@
   margin-left: 80px;
   margin-top: 50px;
 }
+
+.messagesWrapper textarea {
+  background-color: #6d6e71;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 350px;
+}
+
+.messagesWrapper button {
+  margin: 35px;
+  background-color: #e08821;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  padding: 7px 25px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
