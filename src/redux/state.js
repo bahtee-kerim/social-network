@@ -1,3 +1,5 @@
+import { rerenderTree } from "../render";
+
 let state = {
   profilePage: {
     posts: [
@@ -5,7 +7,9 @@ let state = {
       {id: 2, message: "hi, i am a student", likes: 18},
       {id: 3, message: "how are you?", likes: 1},
       {id: 4, message: "great!!!", likes: 151}
-    ]
+    ],
+
+    newTextarea: ''
   },
   
   dialogPage: {
@@ -33,5 +37,38 @@ let state = {
     ]
   }
 }
+
+window.state = state;
+
+export const addPost = () => {
+
+  let newPost = {
+    id: 5,
+    message: state.profilePage.newTextarea,
+    likes: 0
+  }
+
+  state.profilePage.posts.push(newPost);
+  state.profilePage.newTextarea = '';
+  rerenderTree(state);
+}
+
+export const changeTextareaText = (newText) => {
+  state.profilePage.newTextarea = newText;
+  rerenderTree(state);
+}
+
+export const addMessage = (message) => {
+    
+    let newMessage = {
+      id: 4,
+      message: message
+    } 
+
+    state.dialogPage.messages.push(newMessage);
+    rerenderTree(state);
+}
+
+
 
 export default state;

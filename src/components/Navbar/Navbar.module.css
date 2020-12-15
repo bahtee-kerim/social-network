@@ -23,3 +23,8 @@ a.activeLink {
 a:hover {
   color: #e08821;
 }
+
+.friends hr {
+  margin-top: 40px;
+  width: 100px;
+}

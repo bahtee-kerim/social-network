@@ -13,8 +13,8 @@ const Dialogs = (props) => {
 
   const addNewMessage = () => {
     let text = newMessageElement.current.value;
-    
-    alert(text);
+    props.addMessage(text);
+    newMessageElement.current.value = '';
   }
 
   return (
@@ -28,7 +28,7 @@ const Dialogs = (props) => {
 
       { MessagesElement }
 
-      <textarea ref={newMessageElement} cols="50" rows="5"></textarea>
+      <textarea ref={newMessageElement} cols="50" rows="5" />
 
       <button onClick={addNewMessage}>Add message</button>
 
