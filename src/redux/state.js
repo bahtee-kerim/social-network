@@ -1,7 +1,7 @@
 
 
 let store = {
-  rerenderTree() {
+  _rerenderTree() {
 
   },
   _state:  {
@@ -46,32 +46,36 @@ let store = {
     return this._state;
   },
 
-  addPost() {
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newTextarea,
-      likes: 0
-    }
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newTextarea = '';
-    this.rerenderTree(this._state);
-  },
-
-  changeTextareaText(newText) {
-    this._state.profilePage.newTextarea = newText;
-    this.rerenderTree(this._state);
-  },
-
-  addMessage(message) {
-    let newMessage = {
-      id: 4,
-      message: message
-    }
-    this._state.dialogPage.messages.push(newMessage);
-    this.rerenderTree(this._state);
-  },
   subscribe(observer) {
-    this.rerenderTree = observer;
+    this._rerenderTree = observer;
+  },
+
+  dispatch(action) {
+    if(action.type === 'ADD-POST') {
+
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newTextarea,
+        likes: 0
+      }
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newTextarea = '';
+      this._rerenderTree(this._state);
+
+    } else if(action.type === 'CHANGE-TEXTAREA-TEXT') {
+
+      this._state.profilePage.newTextarea = action.newText;
+      this._rerenderTree(this._state);
+
+    } else if (action.type === 'ADD-MESSAGE') {
+
+      let newMessage = {
+        id: 4,
+        message: action.message
+      }
+      this._state.dialogPage.messages.push(newMessage);
+      this._rerenderTree(this._state);
+    }
   }
 }
 
