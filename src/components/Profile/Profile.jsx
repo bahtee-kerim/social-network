@@ -9,7 +9,7 @@ const Profile = (props) => {
     <div className={p.content}>
       
         <ProfileInfo />
-        <MyPosts posts={props.profilePage.posts} addPost={props.addPost} newTextarea={props.profilePage.newTextarea} changeTextareaText={props.changeTextareaText} />
+        <MyPosts state={props.state} addPost={props.addPost} changeTextareaText={props.changeTextareaText} />
 
     </div>
   )
