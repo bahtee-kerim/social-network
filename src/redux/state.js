@@ -1,4 +1,6 @@
-
+const ADD_POST = 'ADD-POST';
+const CHANGE_TEXTAREA_TEXT = 'CHANGE-TEXTAREA-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
 
 let store = {
   _rerenderTree() {
@@ -51,7 +53,7 @@ let store = {
   },
 
   dispatch(action) {
-    if(action.type === 'ADD-POST') {
+    if(action.type === ADD_POST) {
 
       let newPost = {
         id: 5,
@@ -62,12 +64,12 @@ let store = {
       this._state.profilePage.newTextarea = '';
       this._rerenderTree(this._state);
 
-    } else if(action.type === 'CHANGE-TEXTAREA-TEXT') {
+    } else if(action.type === CHANGE_TEXTAREA_TEXT) {
 
       this._state.profilePage.newTextarea = action.newText;
       this._rerenderTree(this._state);
 
-    } else if (action.type === 'ADD-MESSAGE') {
+    } else if (action.type === ADD_MESSAGE) {
 
       let newMessage = {
         id: 4,
@@ -77,6 +79,18 @@ let store = {
       this._rerenderTree(this._state);
     }
   }
+}
+
+export const addPostActionCreator = () => {
+  return {type: ADD_POST}
+}
+
+export const changeTextareaTextActionCreator = (text) => {
+  return {type: CHANGE_TEXTAREA_TEXT, newText: text}
+}
+
+export const addMessageActionCreator = (message) => {
+  return {type: ADD_MESSAGE, message: message}
 }
 
 window.store = store;
