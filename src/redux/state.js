@@ -1,6 +1,8 @@
 const ADD_POST = 'ADD-POST';
 const CHANGE_TEXTAREA_TEXT = 'CHANGE-TEXTAREA-TEXT';
+
 const ADD_MESSAGE = 'ADD-MESSAGE';
+const CHANGE_MESSAGE = 'CHANGE-MESSAGE';
 
 let store = {
   _rerenderTree() {
@@ -32,7 +34,9 @@ let store = {
         {id: 1, message: "Hello, how are you?"},
         {id: 2, message: "Hi, I am fine, and you?"},
         {id: 3, message: "Yeah, nice to meet you! See you later!"}
-      ]
+      ],
+
+      newMessageText: ''
     },
   
     sidebarPage: {
@@ -71,11 +75,14 @@ let store = {
 
     } else if (action.type === ADD_MESSAGE) {
 
-      let newMessage = {
-        id: 4,
-        message: action.message
-      }
-      this._state.dialogPage.messages.push(newMessage);
+      let body = this._state.dialogPage.newMessageText
+      this._state.dialogPage.newMessageText  = "";
+      this._state.dialogPage.messages.push({id: 4, message: body});
+      this._rerenderTree(this._state);
+
+    } else if (action.type === CHANGE_MESSAGE) {
+
+      this._state.dialogPage.newMessageText = action.message;
       this._rerenderTree(this._state);
     }
   }
@@ -89,8 +96,12 @@ export const changeTextareaTextActionCreator = (text) => {
   return {type: CHANGE_TEXTAREA_TEXT, newText: text}
 }
 
-export const addMessageActionCreator = (message) => {
-  return {type: ADD_MESSAGE, message: message}
+export const addMessageActionCreator = () => {
+  return {type: ADD_MESSAGE}
+}
+
+export const changeMessageCreator = (body) => {
+  return {type: CHANGE_MESSAGE, message: body}
 }
 
 window.store = store;

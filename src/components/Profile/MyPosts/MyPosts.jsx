@@ -14,7 +14,6 @@ const MyPosts = (props) => {
   }
 
   const changeTextarea = () => {
-    debugger;
     let text = newPostElement.current.value;
     let action = changeTextareaTextActionCreator(text);
     props.dispatch(action);
