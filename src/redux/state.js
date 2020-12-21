@@ -1,13 +1,8 @@
-const ADD_POST = 'ADD-POST';
-const CHANGE_TEXTAREA_TEXT = 'CHANGE-TEXTAREA-TEXT';
-
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const CHANGE_MESSAGE = 'CHANGE-MESSAGE';
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
 
 let store = {
-  _rerenderTree() {
-
-  },
+  
   _state:  {
     profilePage: {
       posts: [
@@ -48,6 +43,10 @@ let store = {
     }
   },
 
+  _rerenderTree() {
+
+  },
+
   getState() {
     return this._state;
   },
@@ -57,51 +56,12 @@ let store = {
   },
 
   dispatch(action) {
-    if(action.type === ADD_POST) {
+    
+    profileReducer(this._state.profilePage, action);
+    dialogsReducer(this._state.dialogPage, action);
 
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newTextarea,
-        likes: 0
-      }
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newTextarea = '';
-      this._rerenderTree(this._state);
-
-    } else if(action.type === CHANGE_TEXTAREA_TEXT) {
-
-      this._state.profilePage.newTextarea = action.newText;
-      this._rerenderTree(this._state);
-
-    } else if (action.type === ADD_MESSAGE) {
-
-      let body = this._state.dialogPage.newMessageText
-      this._state.dialogPage.newMessageText  = "";
-      this._state.dialogPage.messages.push({id: 4, message: body});
-      this._rerenderTree(this._state);
-
-    } else if (action.type === CHANGE_MESSAGE) {
-
-      this._state.dialogPage.newMessageText = action.message;
-      this._rerenderTree(this._state);
-    }
+    this._rerenderTree(this._state);
   }
-}
-
-export const addPostActionCreator = () => {
-  return {type: ADD_POST}
-}
-
-export const changeTextareaTextActionCreator = (text) => {
-  return {type: CHANGE_TEXTAREA_TEXT, newText: text}
-}
-
-export const addMessageActionCreator = () => {
-  return {type: ADD_MESSAGE}
-}
-
-export const changeMessageCreator = (body) => {
-  return {type: CHANGE_MESSAGE, message: body}
 }
 
 window.store = store;
