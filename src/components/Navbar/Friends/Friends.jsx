@@ -3,7 +3,7 @@ import f from './Friends.module.css';
 
 const Friends = (props) => {
 
-  let friendsElement = props.sidebarPage.friends.map( n => <span> {n.name} </span>)
+  let friendsElement = props.friends.map( n => <span> {n.name} </span>)
 
   return (
 
