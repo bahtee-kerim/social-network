@@ -1,26 +1,39 @@
 const ADD_POST = 'ADD-POST';
 const CHANGE_TEXTAREA_TEXT = 'CHANGE-TEXTAREA-TEXT';
 
+let initialState = {
+  posts: [
+    {id: 1, message: "my first post", likes: 15},
+    {id: 2, message: "hi, i am a student", likes: 18},
+    {id: 3, message: "how are you?", likes: 1},
+    {id: 4, message: "great!!!", likes: 151}
+  ],
 
-const profileReducer = (state, action) => {
+  newTextarea: ''
+}
 
-  if(action.type === ADD_POST) {
 
-    let newPost = {
-      id: 5,
-      message: state.newTextarea,
-      likes: 0
-    }
-    state.posts.push(newPost);
-    state.newTextarea = '';
+const profileReducer = (state = initialState, action) => {
+  
+  switch(action.type) {
+    case ADD_POST:
+      let newPost = {
+        id: 5,
+        message: state.newTextarea,
+        likes: 0
+      }
+      state.posts.push(newPost);
+      state.newTextarea = '';
+    return state;
 
-  } else if(action.type === CHANGE_TEXTAREA_TEXT) {
-
+    case CHANGE_TEXTAREA_TEXT: 
     state.newTextarea = action.newText;
+    return state;
 
+    default:
+      return state;
   }
-
-  return state;
+  
 }
 
 export const addPostActionCreator = () => {
