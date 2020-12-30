@@ -8,3 +8,37 @@ button {
   color: #fff;
   cursor: pointer;
 }
+
+img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-areas: " f n c ";
+  grid-template-columns: 3fr 6fr 3fr;
+  color: rgb(255, 255, 255);
+}
+
+.name {
+  font-size: 30px;
+}
+
+.aidi {
+  margin-top: 20px;
+}
+
+.profile {
+  margin-bottom: 30px;
+}
+
+.status {
+  margin-top: 70px;
+  color: #e08821;
+}
+
+.get {
+  margin-left: 380px;
+  margin-bottom: 50px;
+}
