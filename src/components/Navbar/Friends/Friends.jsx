@@ -9,7 +9,7 @@ const Friends = (props) => {
 
     <div className={f.friends}>
             <div>
-              <h2>Friends:</h2>
+              <h2>Followers:</h2>
             </div>
           <div>
               <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.7tlP1ph61ompULJdycVJlQHaHa%26pid%3DApi&f=1" alt=""/>

@@ -12,6 +12,7 @@ button {
 img {
   width: 100px;
   border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 .wrapper {
@@ -34,11 +35,25 @@ img {
 }
 
 .status {
-  margin-top: 70px;
+  margin-top: 80px;
   color: #e08821;
 }
 
 .get {
   margin-left: 380px;
   margin-bottom: 50px;
+}
+
+.selected {
+  color: #fff;
+  font-weight: bold;
+}
+
+span {
+  color: #e08821;
+  cursor: pointer;
+}
+
+span:hover {
+  color: rgb(255, 255, 255);
 }
