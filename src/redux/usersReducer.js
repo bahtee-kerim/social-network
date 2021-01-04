@@ -1,9 +1,10 @@
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
+/*const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';*/
 const SET_USERS = 'SET_USERS';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_CURRENT_PAGES = 'SET_CURRENT_PAGES';
 const TOGGLE_LOADING = 'TOGGLE_LOADING';
+const TOGGlE_FOLLOWERS = 'TOGGlE_FOLLOWERS';
 
 let initialState = {
   users: [],
@@ -15,7 +16,7 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
   switch(action.type) {
-    case FOLLOW: 
+    /*case FOLLOW: 
     return {
       ...state,
       users: state.users.map(user => {
@@ -35,7 +36,7 @@ const usersReducer = (state = initialState, action) => {
         }
         return user;
       })
-    }
+    }*/
 
     case SET_USERS:
       return {
@@ -61,18 +62,33 @@ const usersReducer = (state = initialState, action) => {
         isLoading: action.isLoading
       }
 
+    case TOGGlE_FOLLOWERS: 
+      return {
+        ...state,
+        users: state.users.map(user => {
+          if(user.id === action.userId) {
+            return {...user, followed: !user.followed}
+          }
+          return user;
+        })
+      }
+
     default:
       return state;
   } 
 
 }
 
-export const follow = (userId) => {
+/*export const follow = (userId) => {
   return {type: FOLLOW, userId}
 }
 
 export const unFollow = (userId) => {
   return {type: UNFOLLOW, userId}
+}*/
+
+export const toggleFollowers =(userId) => {
+  return {type: TOGGlE_FOLLOWERS, userId}
 }
 
 export const setUsers = (users) => {

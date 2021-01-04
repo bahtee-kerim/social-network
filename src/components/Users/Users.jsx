@@ -25,13 +25,13 @@ const Users = (props) => {
     {props.users.map(user => {
       return <div key={user.id} className={u.wrapper}>
               <div className={u.profile}>
-                <div><NavLink to={'./profile/' + user.id}>
+                <div><NavLink to={'./profile/'  + user.id }>
                   <img src={user.photos.small || userFoto} /> 
                     </NavLink>
                   </div>
                   {user.followed
-                    ? <div> <button onClick={() => {props.unFollow(user.id)}}> Follow </button> </div>
-                    : <div> <button onClick={ () => {props.follow(user.id)}}> Unfollow </button> </div>
+                    ? <div> <button onClick={() => {props.toggleFollowers(user.id)}}> Follow </button> </div>
+                    : <div> <button onClick={ () => {props.toggleFollowers(user.id)}}> Unfollow </button> </div>
                   }
               </div>
               <div>

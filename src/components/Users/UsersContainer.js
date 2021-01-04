@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, setCurrentPages, setTotalCount, setUsers, toggleLoading, unFollow } from '../../redux/usersReducer';
+import { toggleFollowers, setCurrentPages, setTotalCount, setUsers, toggleLoading } from '../../redux/usersReducer';
 import Users from './Users';
 import * as axios from 'axios';
 import Preloader from '../../common/Preloader';
@@ -34,8 +34,7 @@ class UsersAPIContainer extends React.Component {
           <Users onChangedPage={this.onChangedPage}
                   currentPage={this.props.currentPage}
                   users={this.props.users}
-                  unFollow={this.props.unFollow}
-                  follow={this.props.follow}
+                  toggleFollowers={this.props.toggleFollowers}
                   totalCount={this.props.totalCount}
                   count={this.props.count}
                   isLoading={this.props.isLoading}  />
@@ -76,6 +75,6 @@ const mapStateToProps = (state) => {
   }
 }*/
 
-const UsersContainer = connect(mapStateToProps, {follow, unFollow, setUsers, setTotalCount, setCurrentPages, toggleLoading})(UsersAPIContainer);
+const UsersContainer = connect(mapStateToProps, {toggleFollowers, setUsers, setTotalCount, setCurrentPages, toggleLoading})(UsersAPIContainer);
 
 export default UsersContainer;

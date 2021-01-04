@@ -11,6 +11,7 @@ let initialState = {
   ],
 
   newTextarea: '',
+
   profile: null
 }
 
