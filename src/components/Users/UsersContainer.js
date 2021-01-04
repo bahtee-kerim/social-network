@@ -1,28 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { followAC, setCurrentPagesAC, setTotalCountAC, setUsersAC, toggleLoadingAC, unFollowAC } from '../../redux/usersReducer';
+import { follow, setCurrentPages, setTotalCount, setUsers, toggleLoading, unFollow } from '../../redux/usersReducer';
 import Users from './Users';
 import * as axios from 'axios';
-import preloader from './../../assets/images/preloader.svg';
+import Preloader from '../../common/Preloader';
 
 class UsersAPIContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleLoadingAC(true)
+    this.props.toggleLoading(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.count}&page=${this.props.currentPage}`)
     .then(response => {
-      this.props.toggleLoadingAC(false)
-        this.props.setUsersAC(response.data.items);
-        this.props.setTotalCountAC(response.data.totalCount)
+      this.props.toggleLoading(false)
+        this.props.setUsers(response.data.items);
+        this.props.setTotalCount(response.data.totalCount)
       });
   }
 
   onChangedPage = (currentPage) => {
-    this.props.setCurrentPagesAC(currentPage)
-    this.props.toggleLoadingAC(true)
+    this.props.setCurrentPages(currentPage)
+    this.props.toggleLoading(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.count}&page=${this.props.currentPage}`)
     .then(response => {
-      this.props.toggleLoadingAC(false)
-        this.props.setUsersAC(response.data.items);
+      this.props.toggleLoading(false)
+        this.props.setUsers(response.data.items);
       });
     
   }
@@ -30,16 +30,15 @@ class UsersAPIContainer extends React.Component {
   render() {
 
     return <>
-          {this.props.isLoading ? <div style={{marginLeft: '400px'}} ><img src={preloader} /></div> : null}
+          {this.props.isLoading ? <Preloader /> : null}
           <Users onChangedPage={this.onChangedPage}
                   currentPage={this.props.currentPage}
                   users={this.props.users}
-                  unfollow={this.props.unfollow}
+                  unFollow={this.props.unFollow}
                   follow={this.props.follow}
                   totalCount={this.props.totalCount}
                   count={this.props.count}
-                  isLoading={this.props.isLoading}
-                  toggleLoadingAC={this.props.toggleLoadingAC}  />
+                  isLoading={this.props.isLoading}  />
     </>
   }
 }
@@ -54,7 +53,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
   return {
     follow: (userId) => {
       dispatch(followAC(userId))
@@ -75,8 +74,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(toggleLoadingAC(isLoading))
     }
   }
-}
+}*/
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIContainer);
+const UsersContainer = connect(mapStateToProps, {follow, unFollow, setUsers, setTotalCount, setCurrentPages, toggleLoading})(UsersAPIContainer);
 
 export default UsersContainer;

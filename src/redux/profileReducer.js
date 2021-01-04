@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const CHANGE_TEXTAREA_TEXT = 'CHANGE-TEXTAREA-TEXT';
+const SET_PROFILE = 'SET_PROFILE';
 
 let initialState = {
   posts: [
@@ -9,7 +10,8 @@ let initialState = {
     {id: 4, message: "great!!!", likes: 151}
   ],
 
-  newTextarea: ''
+  newTextarea: '',
+  profile: null
 }
 
 
@@ -35,6 +37,12 @@ const profileReducer = (state = initialState, action) => {
         newTextarea: action.newText
       }
 
+    case SET_PROFILE:
+      return {
+        ...state,
+        profile: action.profile
+      }
+
     default:
       return state;
   }
@@ -47,6 +55,10 @@ export const addPostActionCreator = () => {
 
 export const changeTextareaTextActionCreator = (text) => {
   return {type: CHANGE_TEXTAREA_TEXT, newText: text}
+}
+
+export const setProfile = (profile) => {
+  return {type: SET_PROFILE, profile}
 }
 
 export default profileReducer;
