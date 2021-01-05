@@ -1,5 +1,3 @@
-/*const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';*/
 const SET_USERS = 'SET_USERS';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_CURRENT_PAGES = 'SET_CURRENT_PAGES';
@@ -16,28 +14,7 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
   switch(action.type) {
-    /*case FOLLOW: 
-    return {
-      ...state,
-      users: state.users.map(user => {
-        if(user.id === action.userId) {
-          return {...user, followed: true}
-        }
-        return user;
-      })
-    }
     
-    case UNFOLLOW: 
-    return {
-      ...state,
-      users: state.users.map(user => {
-        if(user.id === action.userId) {
-          return {...user, followed: false}
-        }
-        return user;
-      })
-    }*/
-
     case SET_USERS:
       return {
         ...state,
@@ -78,14 +55,6 @@ const usersReducer = (state = initialState, action) => {
   } 
 
 }
-
-/*export const follow = (userId) => {
-  return {type: FOLLOW, userId}
-}
-
-export const unFollow = (userId) => {
-  return {type: UNFOLLOW, userId}
-}*/
 
 export const toggleFollowers =(userId) => {
   return {type: TOGGlE_FOLLOWERS, userId}
